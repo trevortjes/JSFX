@@ -1,4 +1,4 @@
-TrevClip:
+# TrevClip:
 
 This plugin is a dead simple hard clipper.
 Every sample above the threshold just gets limited.
@@ -8,15 +8,19 @@ I suggest using an oscilloscope plugin to monitor the amount of clipping.
 
 ![alt text](https://github.com/trevortjes/JSFX/blob/main/CLIPPER.PNG "Before and after")
 
-TrevAutoWah:
+# TrevAutoWah:
 
-AI assisted autowah effect.
+Autowah effect.
 
 <img width="491" height="157" alt="Screenshot 2026-03-06 125913" src="https://github.com/user-attachments/assets/06490d65-a46b-4232-973d-03cc10860af7" />
 
 
-TrevMud:
 
-AI assisted one knob mud killer but with a bit of tweakability if desired.
+# TrevMud:
+
+One knob mud killer but with a bit of tweakability if desired.
+Mud = Center Frequency
+Shovel = Cut amount
+Shovel size = Cut bandwidth
 
 <img width="492" height="120" alt="Screenshot 2026-03-06 125858" src="https://github.com/user-attachments/assets/5af8a98d-21d2-49b5-95c2-93cca76e0304" />
