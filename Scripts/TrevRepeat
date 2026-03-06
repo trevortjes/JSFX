@@ -1,0 +1,68 @@
+desc:TrevRepeat
+ 
+slider1:0<0,1,1{Off,On}>Repeat Trigger
+slider2:4<1,16,1>Division (1/n)
+slider3:100<0,100,1>Wet Mix (%)
+slider4:4<1,16,1>Quantize Start (1/n)
+ 
+@init
+buffer_size = 44100 * 20;
+buf_pos = 0;
+fade_len = 100;
+is_active = 0;
+ 
+@sample
+// 1. Record incoming audio
+buf_pos[0] = spl0;
+buf_pos[1] = spl1;
+ 
+// 2. Timing Calculations
+samples_per_beat = (60 / tempo) * srate;
+loop_len_samples = floor(samples_per_beat / (slider2 / 4));
+loop_len_bytes = loop_len_samples * 2;
+ 
+// 3. Grid Check (The JSFX way)
+// We check if we are within a very small window of the start of a beat division
+beats_per_quant = 4 / slider4;
+current_mod = beat_position % beats_per_quant;
+// If the remainder is very small, we are "on the grid"
+is_on_grid = (current_mod < 0.005);
+ 
+// 4. Trigger Logic
+slider1 > 0.5 ? (
+  (!is_active && is_on_grid) ? (
+    is_active = 1;
+    trigger_pos = buf_pos;
+    play_pos = buf_pos;
+  );
+) : (
+  is_active = 0;
+);
+ 
+// 5. Playback with Crossfades
+is_active ? (
+  relative_pos = (play_pos - trigger_pos);
+  
+  fade_gain = 1.0;
+  relative_pos < (fade_len * 2) ? (
+    fade_gain = (relative_pos / 2) / fade_len;
+  );
+  relative_pos > (loop_len_bytes - (fade_len * 2)) ? (
+    fade_gain = ((loop_len_bytes - relative_pos) / 2) / fade_len;
+  );
+ 
+  out0 = play_pos[0] * fade_gain;
+  out1 = play_pos[1] * fade_gain;
+  
+  play_pos += 2;
+  (play_pos >= trigger_pos + loop_len_bytes) ? (
+    play_pos = trigger_pos;
+  );
+ 
+  spl0 = (spl0 * (1 - slider3/100)) + (out0 * (slider3/100));
+  spl1 = (spl1 * (1 - slider3/100)) + (out1 * (slider3/100));
+);
+ 
+// 6. Advance recording pointer
+buf_pos += 2;
+buf_pos >= (buffer_size * 2) ? buf_pos = 0;
