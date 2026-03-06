@@ -19,8 +19,11 @@ Autowah effect.
 # TrevMud:
 
 One knob mud killer but with a bit of tweakability if desired.
+
 Mud = Center Frequency
+
 Shovel = Cut amount
+
 Shovel size = Cut bandwidth
 
 <img width="492" height="120" alt="Screenshot 2026-03-06 125858" src="https://github.com/user-attachments/assets/5af8a98d-21d2-49b5-95c2-93cca76e0304" />
