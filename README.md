@@ -22,15 +22,14 @@ One knob mud killer but with a bit of tweakability if desired.
 
 Mud = Center Frequency
 
-# WIP TrevRepeat
-
-A beat repeating plugin with a lot of flaws, but with a bit of tweaking can work for you.
-
-<img width="489" height="141" alt="image" src="https://github.com/user-attachments/assets/58e9e399-0468-484d-8dc0-acb709ba321e" />
-
-
 Shovel = Cut amount
 
 Shovel size = Cut bandwidth
 
 <img width="492" height="120" alt="Screenshot 2026-03-06 125858" src="https://github.com/user-attachments/assets/5af8a98d-21d2-49b5-95c2-93cca76e0304" />
+
+# WIP TrevRepeat
+
+A beat repeating plugin with a lot of flaws, but with a bit of tweaking can work for you.
+
+<img width="489" height="141" alt="image" src="https://github.com/user-attachments/assets/58e9e399-0468-484d-8dc0-acb709ba321e" />
